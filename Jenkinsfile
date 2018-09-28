@@ -10,7 +10,7 @@ node{
    stage('Email Notification')
    {
       mail bcc: '', body: '''Your last build is successful!!!!
-      Thanks.''', cc: 'sagarutekar2366@gmail.com', from: '', replyTo: '', subject: 'Jenkins_Job', to: 'prachiboyane10@gmail.com'
+      Thanks.''', cc: '', from: '', replyTo: '', subject: 'Jenkins_Job', to: 'prachiboyane10@gmail.com'
    }
    
    
