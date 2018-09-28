@@ -8,17 +8,16 @@ node{
       //get maven home path
       sh "${mvnHome}/bin/mvn package" 
    }
-   stage('Email Notification')
-   {
-      emailext body: '''Your last build is successful.
-      Thanks.''', subject: 'Jenkins_Job', to: 'prachiboyane10@gmail.com'
-   }
    stage('SonarQube Analysis')
    {
       withSonarQubeEnv('sonar'){
       sh "${mvnHome}/bin/mvn sonar:sonar"
       }
    }
-   
+   stage('Email Notification')
+   {
+      emailext body: '''Your last build is successful.
+      Thanks.''', subject: 'Jenkins_Job', to: 'prachiboyane10@gmail.com'
+   }
    
 }
