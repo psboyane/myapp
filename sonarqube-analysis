@@ -1,1 +1,24 @@
-
+node{
+ def mvnHome = tool name: 'M3', type: 'maven'
+ 
+   stage('SCM Checkout'){
+     git 'https://github.com/psboyane/myapp'
+   }
+   stage('Compile-Package'){
+      //get maven home path
+      sh "${mvnHome}/bin/mvn package" 
+   }
+   stage('Email Notification')
+   {
+      emailext body: '''Your last build is successful.
+      Thanks.''', subject: 'Jenkins_Job', to: 'prachiboyane10@gmail.com'
+   }
+   stage('SonarQube Analysis')
+   {
+      withSonarQubeEnv('sonar'){
+      sh "${mvnHome}/bin/mvn sonar:sonar"
+      }
+   }
+   
+   
+}
