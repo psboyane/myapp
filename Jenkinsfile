@@ -12,6 +12,4 @@ node{
       emailext body: '''Your last build is successful.
       Thanks.''', subject: 'Jenkins_Job', to: 'prachiboyane10@gmail.com'
    }
-   
-   
 }
